@@ -1,0 +1,8 @@
+2.insert 10 rows to machine card ,account, transaction
+find the customer who are accessing the atm machine in day wise and bank wise
+3.display the total withdraw amount from the atm with denomination in day wise
+4.display the refilled cash with atm with denomination in day wise
+5.display how long is in ideal status
+6.display how long the atm machine is active
+7.display the atm always busy 
+8.find the other account customer who are accessing the atm machine day wise and bank wise

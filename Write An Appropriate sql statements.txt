@@ -1,0 +1,2 @@
+Write An Appropriate sql statements using below built in functions
+
