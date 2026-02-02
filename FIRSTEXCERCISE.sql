@@ -331,7 +331,12 @@ create table card (
  );
 select * from card;
 insert into card(account_id,card_number,card_type) value (1,'4111111111110001','Credit');
-insert into card(account_id,card_number,card_type) values (2,'4111111111110002','Debit'),
+DELETE FROM card;
+ALTER TABLE card AUTO_INCREMENT = 1;
+
+INSERT INTO card(account_id,card_number,card_type) VALUES
+(1,'4111111111110001','Credit'),
+(2,'4111111111110002','Debit'),
 (3,'4111111111110003','Debit'),
 (4,'4111111111110004','Debit'),
 (5,'4111111111110005','Debit'),
@@ -341,10 +346,8 @@ insert into card(account_id,card_number,card_type) values (2,'4111111111110002',
 (9,'4111111111110009','Debit'),
 (10,'4111111111110010','Debit');
 
-
-
 create table transaction(
-txn_id INT primary key,
+txn_id INT primary key auto_increment,
 machine_id int ,
 card_number int,
 account_id int ,
@@ -365,8 +368,9 @@ references card(card_id),
 foreign key(account_id)
 references account(account_id)
 );
+DROP table transaction;
 INSERT INTO transaction
-(machine_id, card_id, account_id, txn_type, amount,
+(machine_id, card_number, account_id, txn_type, amount,
  denom_2000, denom_500, denom_200, txn_date, start_time, end_time)
 VALUES
 (1,1,1,'Withdraw',5000,2,2,0,'2026-01-20','10:00:00','10:02:00'),
@@ -379,7 +383,8 @@ VALUES
 (4,8,8,'Withdraw',2500,1,1,0,'2026-01-23','16:00:00','16:03:00'),
 (5,9,9,'Withdraw',9000,4,2,0,'2026-01-24','17:00:00','17:06:00'),
 (5,10,10,'Withdraw',3000,1,2,0,'2026-01-24','18:00:00','18:04:00');
-
+ALTER TABLE transaction
+CHANGE card_number card_id INT;
 create table refill(
 refill_id int primary key,
 machine_id int,
